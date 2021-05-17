@@ -1,0 +1,18 @@
+*.exe
+
+.env*/
+.venv*/
+env*/
+venv*/
+.idea/
+.eggs/
+.bkp/
+.pytest_cache/
+__pycache__/
+
+build/
+dist/
+src/
+
+# Add your folders to ignore here
+output/
