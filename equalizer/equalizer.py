@@ -17,11 +17,12 @@ class Equalizador(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        basepath = os.path.dirname(sys.argv[0])
-        icon = basepath + "/img/icon.png"
+        base_path = os.path.dirname(sys.argv[0])
+        icon = base_path + "/img/icon.png"
         self.iconphoto(True, tk.PhotoImage(file=icon))
+
         self.title("Equalizador")
-        self.mainapp = MainApplication(self)
+        self.main_app = MainApplication(self)
 
     def destroy(self):
         super().destroy()
@@ -44,8 +45,7 @@ class MainApplication(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        """Cria cada um dos Widgets da janela.
-        """
+        """Cria cada um dos Widgets da janela."""
         ttk.Label(
             text="Equalizador de PDS",
             font=("Helvetica", 20, "bold")
@@ -56,8 +56,7 @@ class MainApplication(tk.Frame):
         self.set_apply_button()
 
     def set_file_frame(self):
-        """Cria o frame para escolha de áudio.
-        """
+        """Cria o frame para escolha de áudio."""
         ttk.Label().pack()  # Blank row for better organization
 
         label_frame = ttk.LabelFrame(text="Seleção do arquivo de áudio")
@@ -85,8 +84,7 @@ class MainApplication(tk.Frame):
         ttk.Label().pack()  # Blank row for better organization
 
     def set_scale_frame(self, i):
-        """Cria o frame para escolha dos ganhos.
-        """
+        """Cria o frame para escolha dos ganhos."""
         self.Gp[i-1][0].set(100)
 
         label_frame = ttk.LabelFrame(text=f"Ganho Gp{i} - {self.Gp[i - 1][1]}")
@@ -102,14 +100,13 @@ class MainApplication(tk.Frame):
         ).pack()
 
     def set_apply_button(self):
-        """Cria o botão para rodar os cálculos.
-        """
+        """Cria o botão para rodar os cálculos."""
         ttk.Label(self).pack()  # Blank row for better organization
 
         _wrapper = functools.partial(
             Results,
             master=self.master,
-            audiofile=self.audio_file,
+            audio_file=self.audio_file,
             Gp=[self.Gp[i][0] for i in range(3)])
 
         ttk.Button(

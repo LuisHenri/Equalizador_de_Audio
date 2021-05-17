@@ -1,1 +1,1 @@
-from .equalizer import Equalizador
+from .equalizer import Equalizador  # noqa
