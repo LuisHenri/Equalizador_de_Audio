@@ -1,2 +1,3 @@
-scipy==1.6.2
-matplotlib==3.4.1
+scipy
+matplotlib
+sympy
